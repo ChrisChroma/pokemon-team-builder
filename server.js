@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require("express-session");
 var passport = require("passport");
+const request = require('request');
 
 // load the env vars
 require("dotenv").config();
@@ -39,7 +40,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
-app.use('/trainers', trainersRouter);
+app.use('/', trainersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
