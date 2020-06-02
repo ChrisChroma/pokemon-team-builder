@@ -2,7 +2,9 @@
 <ul class="timeline">
   <% sprites.forEach(function(sprite) { %>
   <li class="timeline-yellow">
-    <img src="<%= sprite %>" />
+    <a href="/pokemon/show/<%= sprite._id %>">
+      <img src="<%= sprite %>" />
+    </a>
   </li>
   <% }) %>
 </ul>
