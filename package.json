@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
@@ -15,9 +16,10 @@
     "http-errors": "~1.6.3",
     "mongoose": "^5.9.16",
     "morgan": "~1.9.1",
+    "node-fetch": "^2.6.0",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
-    "request": "^2.88.2",
-    "rrequest": "0.0.1-security"
+    "pokedex-promise-v2": "^3.2.0",
+    "request": "^2.88.2"
   }
 }
