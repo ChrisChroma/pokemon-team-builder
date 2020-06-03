@@ -18,7 +18,7 @@ async function index(req, res, next) {
     .exec(async function (err, trainers) {
       if (err) return next(err);
       const allPokemonResponse = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon/"
+        "https://pokeapi.co/api/v2/pokemon?limit=151"
       );
       const allPokemonDetailsPromises = allPokemonResponse.data.results.map(
         (pokemon) => axios.get(pokemon.url)

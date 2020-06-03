@@ -5,7 +5,5 @@ module.exports = {
 }
 
 function show(req, res) {
-    Pokemon.findById(req.params.id, (err, pokemon) => {
-        res.render("pokemon/show", { pokemon: pokemon })
-    })
-};
+  res.render("pokemon/show", { pokemon: null });
+}
