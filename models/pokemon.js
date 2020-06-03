@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 let pokemonSchema = new mongoose.Schema(
     {
         name: String,
-        sprite: Image,
+        sprite: String,
         type1: String,
         type2: String,
         abilities: [String],

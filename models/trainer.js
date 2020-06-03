@@ -2,8 +2,13 @@ var mongoose = require("mongoose");
 
 let teamSchema = new mongoose.Schema(
     {
-      name: String,
-      pokemon: []
+      name: {
+        type: String
+      },
+      pokemon: [],
+      trainer: {
+        type: String
+      }
     }
 )
 
@@ -14,6 +19,7 @@ var trainerSchema = new mongoose.Schema(
     cohort: String,
     avatar: String,
     googleId: String,
+    team: [teamSchema]
   },
   {
     timestamps: true,
