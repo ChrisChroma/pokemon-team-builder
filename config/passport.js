@@ -1,7 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const Trainer = require('../models/trainer')
-
+const Trainer = require("../models/trainer");
 
 // new code below
 passport.use(
@@ -18,7 +17,7 @@ passport.use(
           return cb(null, trainer);
         } else {
           // we have a new Trainer via OAuth!
-          var newTrainer = new Trainer({
+          const newTrainer = new Trainer({
             name: profile.displayName,
             email: profile.emails[0].value,
             googleId: profile.id,
@@ -33,12 +32,12 @@ passport.use(
   )
 );
 
-passport.serializeUser(function(trainer, done) {
-    return done(null, trainer._id);
+passport.serializeUser(function (trainer, done) {
+  return done(null, trainer._id);
 });
 
-passport.deserializeUser(function(id, done) {
-    Trainer.findById(id, function(err, trainer) {
-        return done(err, trainer);
-    });
+passport.deserializeUser(function (id, done) {
+  Trainer.findById(id, function (err, trainer) {
+    return done(err, trainer);
+  });
 });

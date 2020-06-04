@@ -1,21 +1,9 @@
 const Trainer = require("../models/trainer");
-const axios = require("axios");
-
-module.exports = {
-  index,
-  addToTeam,
-  delete: deleteOne,
-};
-
-function deleteOne(req, res) {}
 
 function addToTeam(req, res) {
-  Trainer.findById(req.params.id, (err, team) => {
-    trainer.team.push(req.params.id);
-    trainer.save((err) => {
-      console.error(err);
-      if (err) res.redirect("/trainers");
-    });
+  Trainer.find({ email: req.user.email }, (err, trainer) => {
+    if (err) console.error(err);
+    console.log(trainer);
   });
 }
 
@@ -29,4 +17,7 @@ function index(req, res, next) {
   }
 }
 
-function pokemonDetails(req, res) {}
+module.exports = {
+  index,
+  addToTeam,
+};

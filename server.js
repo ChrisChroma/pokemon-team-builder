@@ -1,17 +1,17 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var session = require("express-session");
-var passport = require("passport");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const session = require("express-session");
+const passport = require("passport");
 const request = require("request");
 
 // load the env vars
 require("dotenv").config();
 
 // create the Express app
-var app = express();
+const app = express();
 
 // connect to the MongoDB with mongoose
 require("./config/database");

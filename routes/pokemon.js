@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-var pokemonCtrl = require("../controllers/pokemon");
+const express = require("express");
+const router = express.Router();
+const pokemonCtrl = require("../controllers/pokemon");
 
 router.get("/pokemon", pokemonCtrl.index);
 

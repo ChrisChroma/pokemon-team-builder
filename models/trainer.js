@@ -1,25 +1,20 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-let teamSchema = new mongoose.Schema(
-    {
-      name: {
-        type: String
-      },
-      pokemon: [],
-      trainer: {
-        type: String
-      }
-    }
-)
+const teamSchema = new mongoose.Schema({
+  name: {
+    type: String,
+  },
+  pokemon: [],
+});
 
-var trainerSchema = new mongoose.Schema(
+const trainerSchema = new mongoose.Schema(
   {
     name: String,
     email: String,
     cohort: String,
     avatar: String,
     googleId: String,
-    team: [teamSchema]
+    team: [teamSchema],
   },
   {
     timestamps: true,
@@ -27,4 +22,3 @@ var trainerSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Trainer", trainerSchema);
-module.exports = mongoose.model('Team', teamSchema)

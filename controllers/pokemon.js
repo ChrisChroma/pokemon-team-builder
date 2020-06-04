@@ -11,7 +11,6 @@ function show(req, res) {
 
 function index(req, res) {
   Pokemon.find({}, function (err, pokemons) {
-    console.log("pokemons", pokemons);
     res.render("pokemon/index", {
       allPokemon: pokemons.sort((a, b) => a.order - b.order),
     });
