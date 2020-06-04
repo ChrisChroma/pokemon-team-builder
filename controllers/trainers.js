@@ -3,7 +3,22 @@ const axios = require("axios");
 
 module.exports = {
   index,
+  addToTeam,
+  delete: deleteOne,
 };
+
+function deleteOne(req, res) {}
+
+function addToTeam(req, res) {
+  Trainer.findById(req.params.spriteUrl, (err, team) => {
+    console.log("pokemon", req.params.spriteUrl);
+    trainer.team.push(req.params.spriteUrl);
+    trainer.save((err) => {
+      console.error(err);
+      if (err) res.redirect("/trainers");
+    });
+  });
+}
 
 async function index(req, res, next) {
   // Make the query object to use with Student.find based up
@@ -18,7 +33,7 @@ async function index(req, res, next) {
     .exec(async function (err, trainers) {
       if (err) return next(err);
       const allPokemonResponse = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=151"
+        "https://pokeapi.co/api/v2/pokemon?limit=20"
       );
       const allPokemonDetailsPromises = allPokemonResponse.data.results.map(
         (pokemon) => axios.get(pokemon.url)
@@ -36,4 +51,8 @@ async function index(req, res, next) {
         sprites,
       });
     });
+}
+
+function pokemonDetails(req,res) {
+  
 }

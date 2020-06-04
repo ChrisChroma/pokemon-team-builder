@@ -10,10 +10,15 @@ a {
 li {
   display: inline-block;
   margin: 4px;
+  text-align: center;
 }
 
 img {
   background-color: rgb(250, 161, 161);
   border-radius: 50%;
   margin: 4px;
+}
+
+navbar-fixed {
+  
 }
