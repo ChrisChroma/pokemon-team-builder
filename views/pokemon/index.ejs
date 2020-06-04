@@ -1,0 +1,20 @@
+<%- include('../partials/header'); %>
+<ul class="timeline">
+  <% allPokemon.forEach(function(pokemon) { %>
+  <li class="timeline-yellow">
+    <a href="/pokemon/show/<%= pokemon._id %>">
+      <img src="<%= pokemon.sprite %>" />
+    </a>
+    <div>
+      <% const name = pokemon.name %>
+      <% const capName = name.charAt(0).toUpperCase() + name.slice(1) %>
+      <%= capName %>
+    </div>
+    <form action="/trainers/teams/<%= pokemon.id %>" method="PUT">
+      <button type="submit" class="btn btn-danger">
+        Add to Team
+    </form>
+  </li>
+  <% }) %>
+</ul>
+<%- include('../partials/footer'); %>

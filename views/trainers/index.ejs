@@ -1,22 +1,9 @@
 <%- include('../partials/header'); %>
-<ul class="timeline">
-  <% sprites.forEach(function(sprite) { %>
-  <li class="timeline-yellow">
-    <a href="/pokemon/show/<%= sprite._id %>">
-      <img src="<%= sprite %>" />
-    </a>
-    <% if (trainer._id.equals(user && user._id)) { %>
-    <form action="/trainers/team/<%= sprite %>" method="PUT">
-      <button type="submit" class="btn btn-danger" onclick="addToTeam(test.id)">
-        Add to Team
-    </form>
-    <% } %>
+<h1>Welcome <%= user.name %></h1>
+<h2>Here's your team:</h2>
+<ul>
+  <li>
+    Fill in later
   </li>
-  <% }) %>
 </ul>
-<script>
-  const addToTeam = (sprite) => {
-    console.log(sprite);
-  };
-</script>
 <%- include('../partials/footer'); %>

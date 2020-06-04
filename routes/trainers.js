@@ -3,7 +3,7 @@ var router = express.Router();
 var trainersCtrl = require("../controllers/trainers");
 
 router.get("/trainers", trainersCtrl.index);
-router.put("/trainers/team/:spriteUrl", trainersCtrl.addToTeam);
+router.put("/trainers/teams/:id", trainersCtrl.addToTeam);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {

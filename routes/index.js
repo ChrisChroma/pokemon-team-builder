@@ -1,10 +1,10 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const passport = require('passport')
+const passport = require("passport");
 
 /* GET home page. */
 router.get("/", function (req, res) {
-  res.redirect("/trainers");
+  res.render("index", { title: "Pokemon Team Builder" });
 });
 router.get(
   "/auth/google",

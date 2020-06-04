@@ -7,7 +7,12 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -21,14 +26,26 @@
         <div class="nav-wrapper">
           <a href="" class="brand-logo left">Pokemon Team Builder</a>
           <ul class="right">
+            <% if (user) { %>
             <li>
-              <% if (user) { %>
-              <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-              <% } else { %>
-              <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-              <% } %>
+              <a href="/pokemon">Pokemon</a>
             </li>
+            <li>
+              <a href="/trainers/">Trainers(WIP)</a>
+            </li>
+            <li>
+              <a href="/logout"
+                ><i class="material-icons left">trending_flat</i>Log Out</a
+              >
+              <% } else { %>
+              <a href="/auth/google"
+                ><i class="material-icons left">vpn_key</i>Login with Google</a
+              >
+            </li>
+            <% } %>
           </ul>
         </div>
       </nav>
     </div>
+  </body>
+</html>
