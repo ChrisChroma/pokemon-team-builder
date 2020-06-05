@@ -1,9 +1,22 @@
 <%- include('../partials/header'); %>
 <h1>Welcome <%= user.name %></h1>
 <h2>Here's your team:</h2>
-<ul>
-  <li>
-    Fill in later
+<ul class="timeline">
+  <% user.team.forEach(function(pokemon) { %>
+  <li class="timeline-yellow">
+    <a href="/pokemon/show/<%= pokemon._id %>">
+      <img src="<%= pokemon.sprite %>" />
+    </a>
+    <div>
+      <% const name = pokemon.name %>
+      <% const capName = name.charAt(0).toUpperCase() + name.slice(1) %>
+      <%= capName %>
+    </div>
+    <form action="/trainers/teams/remove/<%= pokemon.id %>" method="POST">
+      <button type="submit" class="btn btn-danger">
+        Remove
+    </form>
   </li>
+  <% }) %>
 </ul>
 <%- include('../partials/footer'); %>

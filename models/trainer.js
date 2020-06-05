@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 
 const teamSchema = new mongoose.Schema({
-  name: {
-    type: String,
-  },
-  pokemon: [],
+  pokemon: [{ type: mongoose.Schema.Types.ObjectId, ref: "Pokemon" }],
 });
 
 const trainerSchema = new mongoose.Schema(
@@ -14,7 +11,7 @@ const trainerSchema = new mongoose.Schema(
     cohort: String,
     avatar: String,
     googleId: String,
-    team: [teamSchema],
+    team: [{ type: mongoose.Schema.Types.ObjectId, ref: "Pokemon" }],
   },
   {
     timestamps: true,

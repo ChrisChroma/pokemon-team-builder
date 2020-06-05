@@ -13,6 +13,7 @@ function index(req, res) {
   Pokemon.find({}, function (err, pokemons) {
     res.render("pokemon/index", {
       allPokemon: pokemons.sort((a, b) => a.order - b.order),
+      user: req.user,
     });
   });
 }

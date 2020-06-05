@@ -19,7 +19,7 @@ router.get(
 );
 router.get("/logout", function (req, res) {
   req.logout();
-  res.redirect("/trainers");
+  res.redirect("/");
 });
 
 module.exports = router;
