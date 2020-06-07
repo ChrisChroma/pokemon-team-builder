@@ -25,9 +25,18 @@ img {
   margin: 4px;
 }
 
+#logo {
+  background-color: white;
+  border-radius: 49%;
+}
+
 .timeline {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+nav {
+  background-color: #c62828;
 }
