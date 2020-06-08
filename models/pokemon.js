@@ -7,6 +7,7 @@ let pokemonSchema = new mongoose.Schema({
   type1: String,
   type2: String,
   abilities: [String],
+  stats: [Object],
   moves: [String],
 });
 

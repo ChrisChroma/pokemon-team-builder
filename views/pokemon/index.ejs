@@ -10,8 +10,8 @@
       <% const capName = name.charAt(0).toUpperCase() + name.slice(1) %>
       <%= capName %>
     </div>
-    <% if (user.team.length < 6) { %>
-    <form action="/trainers/teams/<%= pokemon.id %>" method="POST">
+    <% if (team && team.pokemon.length < 6) { %>
+    <form action="/trainers/teams/add/<%= team.id %>/<%= pokemon.id %>" method="POST">
       <button type="submit" class="btn btn-danger">
         Add to Team
     </form>

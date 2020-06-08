@@ -23,6 +23,10 @@ async function index() {
       type1: pokemon.types[0].type.name,
       type2: pokemon.types[1] ? pokemon.types[1].type.name : null,
       abilities: pokemon.abilities.map((abilityObj) => abilityObj.ability.name),
+      stats: pokemon.stats.map((statObj) => ({
+        name: statObj.stat.name,
+        stat: statObj.base_stat,
+      })),
       moves: pokemon.moves.map((moveObj) => moveObj.move.name),
     });
   });

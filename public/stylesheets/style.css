@@ -28,6 +28,7 @@ img {
 #logo {
   background-color: white;
   border-radius: 49%;
+  margin-right: 10px;
 }
 
 .timeline {
@@ -38,5 +39,5 @@ img {
 }
 
 nav {
-  background-color: #c62828;
+  background-color: #c62828 !important;
 }
