@@ -9,7 +9,7 @@
 </form>
 <% if (teams.length > 0) {%>
   <h2>Here's your teams:</h2>
-  <% teams.forEach(function(team, idx) { %>
+  <% teams.forEach(function(team) { %>
     <div class="flex-row">
       <h4>
         <%= team.name %>
@@ -42,7 +42,7 @@
     
     
     <ul class="team">
-      <% team.pokemon.forEach(function(pokemon){ %> 
+      <% team.pokemon.forEach(function(pokemon, idx){ %> 
       <li class="timeline-yellow">
         <a href="/pokemon/show/<%= pokemon._id %>">
           <img src="<%= pokemon.sprite %>" />

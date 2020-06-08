@@ -27,7 +27,9 @@ async function deleteFromTeam(req, res) {
   console.log("trainers/deleteFromTeam");
   const trainer = await Trainer.findOne({ email: req.user.email });
   const team = trainer.team.id(req.params.teamId);
+  console.log("team", team);
   team.pokemon.splice(req.params.pokemonIdx, 1);
+  console.log("req.params.pokemonIdx", req.params.pokemonIdx);
   trainer.save();
   res.redirect("/trainers");
 }
