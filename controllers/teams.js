@@ -1,6 +1,25 @@
 const Pokemon = require("../models/pokemon");
 const Trainer = require("../models/trainer");
 
+async function remove(req, res) {
+  console.log(req.params.teamId);
+  const trainer = await Trainer.findOne({ email: req.user.email });
+  trainer.team = trainer.team.filter(
+    (team) => String(team._id) !== String(req.params.teamId)
+  );
+  trainer.save();
+  res.redirect("/trainers");
+}
+
+async function updateName(req, res) {
+  const trainer = await Trainer.findOne({ email: req.user.email });
+  let team = trainer.team.id(req.params.teamId);
+  team.name = req.body.name;
+  console.log("req.body", req.body);
+  trainer.save();
+  res.redirect("/trainers");
+}
+
 async function index(req, res) {
   const trainerDocuments = await Trainer.find({});
   const trainerPromises = trainerDocuments.map(async (trainer) => {
@@ -33,4 +52,6 @@ async function index(req, res) {
 
 module.exports = {
   index,
+  remove,
+  updateName,
 };

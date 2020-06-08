@@ -31,6 +31,12 @@ img {
   margin-right: 10px;
 }
 
+.team {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 .timeline {
   display: flex;
   align-items: center;
@@ -40,4 +46,13 @@ img {
 
 nav {
   background-color: #c62828 !important;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.flex-row > a {
+  margin-left: 16px;
 }

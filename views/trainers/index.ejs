@@ -8,12 +8,40 @@
   <button>Create team</button>
 </form>
 <% if (teams.length > 0) {%>
-  <h2>Here's your team:</h2>
+  <h2>Here's your teams:</h2>
   <% teams.forEach(function(team, idx) { %>
-    <h4>
-      <%= team.name %>
-    </h4>
-    <ul class="timeline">
+    <div class="flex-row">
+      <h4>
+        <%= team.name %>
+      </h4>
+      <a class="waves-effect waves-light btn-small blue darken-1" href="/pokemon/add/<%= team._id %>">Add A Pokemon</a>
+      <a class="waves-effect waves-light btn-small red lighten-1" href="/teams/remove/<%= team._id %>">Remove Team</a>
+      <div class="row">
+        <form action="/teams/change/name/<%= team._id %>" method="POST">
+        <div class="input-field col s6">
+          <input placeholder="Placeholder" id="teamName" name="name" type="text" class="validate" required>
+          <label for="teamName">New name</label>
+        </div>
+        <div class="input-field col s6">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Change Name
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+    </form>
+  </div>
+    </div>
+    <br />
+
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+      </div>
+      <div class="modal-footer">
+      
+      </div>
+    </div>
+    
+    
+    <ul class="team">
       <% team.pokemon.forEach(function(pokemon){ %> 
       <li class="timeline-yellow">
         <a href="/pokemon/show/<%= pokemon._id %>">
@@ -25,13 +53,14 @@
           <%= capName %>
         </div>
         <form action="/trainers/teams/remove/<%= team._id %>/<%= idx %>" method="POST">
-          <button type="submit" class="btn btn-danger">
+          <button type="submit" class="waves-effect waves-light btn-small red darken-4">
             Remove
         </form>
       </li>
       <% }) %> 
     </ul>
-    <a class="button-link" href="/pokemon/add/<%= team._id %>">ADD</a>
+    <br />
+    <br />
   <% }) %>
 <% } %>
 <%- include('../partials/footer'); %>
