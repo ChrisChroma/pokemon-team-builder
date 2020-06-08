@@ -16,20 +16,18 @@ async function createTeam(req, res) {
 async function addToTeam(req, res) {
   console.log("trainers/addToTeam");
   const trainer = await Trainer.findOne({ email: req.user.email });
-  const pokemon = await Pokemon.findOne({ _id: req.params.id });
-  trainer.team.pokemon.push(pokemon._id);
+  const team = trainer.team.id(req.params.teamId);
+  const pokemon = await Pokemon.findOne({ _id: req.params.pokemonId });
+  team.pokemon.push(pokemon._id);
   trainer.save();
   res.redirect("/trainers");
 }
 
 async function deleteFromTeam(req, res) {
   console.log("trainers/deleteFromTeam");
-
   const trainer = await Trainer.findOne({ email: req.user.email });
-  const dbPokemon = await Pokemon.findOne({ _id: req.params.id });
-  trainer.team.pokemon = trainer.team.pokemon.filter(
-    (pokemon) => String(pokemon) !== String(dbPokemon._id)
-  );
+  const team = trainer.team.id(req.params.teamId);
+  team.pokemon.splice(req.params.pokemonIdx, 1);
   trainer.save();
   res.redirect("/trainers");
 }
@@ -37,11 +35,26 @@ async function deleteFromTeam(req, res) {
 async function index(req, res, next) {
   console.log("trainers/index");
   const trainer = await Trainer.findOne({ email: req.user.email });
+  const teams = await trainer.team.map(async (team) => {
+    const pokemonPromises = await team.pokemon.map(async (pokemonId) => {
+      const pokemonDocument = Pokemon.findOne({ _id: pokemonId });
+      return (await pokemonDocument).toObject();
+    });
+    const pokemon = await Promise.all(pokemonPromises);
+
+    return {
+      _id: team._id,
+      name: team.name,
+      pokemon: pokemon,
+    };
+  });
+
   if (!trainer) {
     res.redirect("/");
   } else {
     res.render("trainers/index", {
       user: trainer,
+      teams: await Promise.all(teams),
     });
   }
 }

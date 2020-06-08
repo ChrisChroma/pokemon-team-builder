@@ -7,9 +7,9 @@
   <input type="text" required name="name" id="team-name">
   <button>Create team</button>
 </form>
-<% if (user.team.length > 0) {%>
+<% if (teams.length > 0) {%>
   <h2>Here's your team:</h2>
-  <% user.team.forEach(function(team) { %>
+  <% teams.forEach(function(team, idx) { %>
     <h4>
       <%= team.name %>
     </h4>
@@ -24,14 +24,14 @@
           <% const capName = name.charAt(0).toUpperCase() + name.slice(1) %>
           <%= capName %>
         </div>
-        <form action="/trainers/teams/remove/<%= pokemon.id %>" method="POST">
+        <form action="/trainers/teams/remove/<%= team._id %>/<%= idx %>" method="POST">
           <button type="submit" class="btn btn-danger">
             Remove
         </form>
       </li>
       <% }) %> 
     </ul>
-    <a href="/pokemon/add/<%= team._id %>">ADD</a>
+    <a class="button-link" href="/pokemon/add/<%= team._id %>">ADD</a>
   <% }) %>
 <% } %>
 <%- include('../partials/footer'); %>

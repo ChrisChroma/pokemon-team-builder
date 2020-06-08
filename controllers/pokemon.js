@@ -1,4 +1,5 @@
 const Pokemon = require("../models/pokemon");
+const Trainer = require("../models/trainer");
 
 module.exports = {
   show,
@@ -12,12 +13,26 @@ function show(req, res) {
   });
 }
 
-function index(req, res) {
+async function index(req, res) {
   console.log("pokemon/index");
-  Pokemon.find({}, function (err, pokemons) {
-    res.render("pokemon/index", {
-      allPokemon: pokemons.sort((a, b) => a.order - b.order),
-      user: req.user,
+  if (req.params.teamId) {
+    const trainer = await Trainer.findOne({ email: req.user.email });
+    const team = trainer.team.id(req.params.teamId);
+    console.log(team);
+    Pokemon.find({}, function (err, pokemons) {
+      res.render("pokemon/index", {
+        allPokemon: pokemons.sort((a, b) => a.order - b.order),
+        user: req.user,
+        team,
+      });
     });
-  });
+  } else {
+    Pokemon.find({}, function (err, pokemons) {
+      res.render("pokemon/index", {
+        allPokemon: pokemons.sort((a, b) => a.order - b.order),
+        user: req.user,
+        team: false,
+      });
+    });
+  }
 }

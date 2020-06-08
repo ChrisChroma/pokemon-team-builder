@@ -21,6 +21,7 @@ require("./config/passport");
 const indexRouter = require("./routes/index");
 const trainersRouter = require("./routes/trainers");
 const pokemonRouter = require("./routes/pokemon");
+const teamsRouter = require("./routes/teams");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -48,6 +49,7 @@ app.use(function (req, res, next) {
 app.use("/", indexRouter);
 app.use("/", trainersRouter);
 app.use("/", pokemonRouter);
+app.use("/", teamsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

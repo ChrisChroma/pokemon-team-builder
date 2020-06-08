@@ -1,36 +1,40 @@
 <%- include('../partials/header'); %>
-<div class="row">
-  <div class="col-md-4">
-    <div class="card">
-      <div class="pokemonimage" id="pokemon-card">
-        <img src="<%= pokemon.sprite %>" />
-      </div>
-      <div class="card-content">
-        <h4>
-          <% const name = pokemon.name %> <% const capName =
-          name.charAt(0).toUpperCase() + name.slice(1) %> <%= capName %>
-        </h4>
-        <p>Type: <%= pokemon.type1 %></p>
-        <p>Ability 1: <%= pokemon.abilities[0] %></p>
-        <p>Ability 2: <%= pokemon.abilities[1] %></p>
-        <p>
-          <%= pokemon.stats[0].name %>: <%= pokemon.stats[0].stat %>
-        </p>
-        <p>
-          <%= pokemon.stats[1].name %>: <%= pokemon.stats[1].stat %>
-        </p>
-        <p>
-          <%= pokemon.stats[2].name %>: <%= pokemon.stats[2].stat %>
-        </p>
-        <p>
-          <%= pokemon.stats[3].name %>: <%= pokemon.stats[3].stat %>
-        </p>
-        <p>
-          <%= pokemon.stats[4].name %>: <%= pokemon.stats[4].stat %>
-        </p>
-        <p>
-          <%= pokemon.stats[5].name %>: <%= pokemon.stats[5].stat %>
-        </p>
+<div class="container">
+  <div class="row">
+    <div class="col s4 offset-s4">
+      <div class="card center-align">
+        <div class="pokemonimage" id="pokemon-card">
+          <img src="<%= pokemon.sprite %>" />
+        </div>
+        <div class="card-content">
+          <h4>
+            <% const name = pokemon.name %> <% const capName =
+            name.charAt(0).toUpperCase() + name.slice(1) %> <%= capName %>
+          </h4>
+          <div class="left-align">
+            <p><b>Type:</b> <%= pokemon.type1 %></p>
+            <p><b>Ability 1:</b> <%= pokemon.abilities[0] %></p>
+            <p><b>Ability 2:</b> <%= pokemon.abilities[1] %></p>
+            <p>
+              <b><%= pokemon.stats[0].name %>:</b> <%= pokemon.stats[0].stat %>
+            </p>
+            <p>
+              <b><%= pokemon.stats[1].name %>:</b> <%= pokemon.stats[1].stat %>
+            </p>
+            <p>
+              <b><%= pokemon.stats[2].name %>:</b> <%= pokemon.stats[2].stat %>
+            </p>
+            <p>
+              <b><%= pokemon.stats[3].name %>:</b> <%= pokemon.stats[3].stat %>
+            </p>
+            <p>
+              <b><%= pokemon.stats[4].name %>:</b> <%= pokemon.stats[4].stat %>
+            </p>
+            <p>
+              <b><%= pokemon.stats[5].name %>:</b> <%= pokemon.stats[5].stat %>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

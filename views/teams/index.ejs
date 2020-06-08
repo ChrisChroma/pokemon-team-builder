@@ -1,0 +1,26 @@
+<%- include('../partials/header'); %>
+<h1>All Users Teams</h1>
+<% trainers.forEach(function(trainer) { %>
+<div class="card horizontal">
+  <div class="card-content">
+    <span class="card-title"><%= trainer.name %></span>
+    <% trainer.teams.forEach(function(team){ %>
+    <div class="divider"></div>
+    <span class="card-title"><%= team.name%></span>
+    <ul class="timeline">
+      <% team.pokemon.forEach(function(pokemon){ %>
+      <li class="timeline-yellow">
+        <a href="/pokemon/show/<%= pokemon._id %>">
+          <img src="<%= pokemon.sprite %>" />
+        </a>
+        <div>
+          <% const name = pokemon.name %> <% const capName =
+          name.charAt(0).toUpperCase() + name.slice(1) %> <%= capName %>
+        </div>
+      </li>
+      <% }) %>
+    </ul>
+    <div class="divider"></div>
+  </div>
+</div>
+<% }) %> <%}) %> <%- include('../partials/footer'); %>
